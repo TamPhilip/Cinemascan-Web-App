@@ -1,2 +1,2 @@
 web: python main.py
-heroku ps:scale web=1
+heroku ps:type worker=standard-2x1
