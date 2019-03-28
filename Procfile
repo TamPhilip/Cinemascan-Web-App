@@ -1,2 +1,2 @@
-web: gunicorn --workers=2 main:app
-web: gunicorn run:app
+web: python main.py
+heroku ps:scale web=1
