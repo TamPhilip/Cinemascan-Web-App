@@ -1,0 +1,164 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Movie Plot Genre Classifier</title>
+  <meta name="description" content="Genre Classification">
+  <meta name="author" content="PhilipTam">
+  <link rel="stylesheet" href="static/css/styles.css">
+      <!--bootstrap-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+</head>
+
+<body>
+
+    <div class="top" id="home">
+        <h2> Movie Plot Genre Classifier </h2>
+        <h3> A movie plot summary classifier built using a Bidirectional LSTM and trained using the IMBD and CMU Movie Summary Corpus datasets. </h3>
+    </div>
+
+    <div id="navWrap">
+        <nav>
+        <ul>
+              <li class="border-right"><a class="active" href="#home">Home</a></li>
+              <li class="border-right"><a href="#predict">Predict</a></li>
+              <li class="border-right"><a href="#sample">sample</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <script src="static/js/mnav.js"></script>
+    </div>
+
+    <div class="predict section" id="predict">
+
+        <div class="title title_height">
+            <h1 id="specialh1"> Predict </h1>
+        </div>
+        <div class="text">
+             <h2> Copy-paste or write a movie plot summary to classify your plot. The results will be displayed below with the genre and accuracy for each. </h2>
+        </div>
+
+         <form class="form" action="{{ url_for('submit') }}" method="post">
+           <textarea name="text" rows="10" cols="50" placeholder="Enter plot summary">{% if text %}{{text}}{%endif%}</textarea>
+           <input type="submit" class="btn btn-outline-primary">
+        </form>
+
+        <div class ="result">
+                <table id="genres">
+                    <tr>
+                        <th>Genre</th>
+                        <td>Action</td>
+                        <td>Adventure</td>
+                        <td>Comedy</td>
+                        <td>Crime</td>
+                        <td>Family</td>
+                        <td>Mystery</td>
+                        <td>Romance</td>
+                        <td>Thriller</td>
+                    </tr>
+                    <tr>
+                         <th>Accuracy</th>
+                        {% if data %}
+                            {% for item in data %}
+                                {% for key,value in item|dictsort%}
+                                      <td>{{value}}</td>
+                                {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        {% endif %}
+                    </tr>
+                </table>
+        </div>
+
+        <div class= "taglist">
+             {% if tags %}
+                 {% for x in tags %}
+                        {% if x is eq("Action")%}
+                            <a href="#" class="badge badge-default">Action</a>
+                        {%elif x is eq("Adventure")%}
+                            <a href="#" class="badge badge-primary">Adventure</a>
+                        {%elif x is eq("Comedy")%}
+                            <a href="#" class="badge badge-secondary">Comedy</a>
+                        {%elif x is eq("Romance")%}
+                            <a href="#" class="badge badge-success">Romance</a>
+                        {%elif x is eq("Thriller")%}
+                            <a href="#" class="badge badge-danger">Thriller</a>
+                        {%elif x is eq("Crime")%}
+                            <a href="#" class="badge badge-warning">Crime</a>
+                        {%elif x is eq("Mystery")%}
+                            <a href="#" class="badge badge-info">Mystery</a>
+                        {%elif x is eq("Family")%}
+                            <a href="#" class="badge badge-dark">Family</a>
+                        {%endif%}
+                    {% endfor %}
+                {% endif %}
+        </div>
+    </div>
+
+    <div class="method section" id="sample">
+        <div class="title title_height text-center">
+            <h1> sample </h1>
+        </div>
+         <div class="card-deck">
+            <div class="card">
+              <div class="card-body text-center">
+                  <h2> Us </h2>
+                <p class="card-text">Some Haunted by an unexplainable and unresolved trauma from her past and compounded by a string of eerie coincidences, Adelaide feels her paranoia elevate to high-alert as she grows increasingly certain that something bad is going to befall her family. After spending a tense beach day with their friends, the Tylers (Emmy winner Elisabeth Moss, Tim Heidecker, Cali Sheldon, Noelle Sheldon), Adelaide and her family return to their vacation home. When darkness falls, the Wilsons discover the silhouette of four figures holding hands as they stand in the driveway. Us pits an endearing American family against a terrifying and uncanny opponent: doppelgängers of themselves.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body text-center">
+                  <h2> Isn't Romantic </h2>
+                  <p class="card-text"> New York City architect Natalie works hard to get noticed at her job but is more likely to be asked to deliver coffee and bagels than to design the city's next skyscraper. And if things weren't bad enough, Natalie, a lifelong cynic when it comes to love, has an encounter with a mugger that renders her unconscious, waking to discover that her life has suddenly become her worst nightmare -- a romantic comedy -- and she is the leading lady. </p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body text-center">
+                  <h2> How To Train Your Dragon: The Hidden World </h2>
+                <p class="card-text"> Now chief and ruler of Berk alongside Astrid, Hiccup has created a gloriously chaotic dragon utopia. When the sudden appearance of female Light Fury coincides with the darkest threat their village has ever faced, Hiccup and Toothless must leave the only home they've known and journey to a hidden world thought only to exist in myth. As their true destines are revealed, dragon and rider will fight together-to the very ends of the Earth-to protect everything they've grown to treasure.</p>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+    <div class="about section" id="about">
+         <div class="title title_height">
+            <h1> About </h1>
+        </div>
+         <div class="text">
+             <ul id="mais_info">
+                 <li> This project is the final project for MAIS-202: Accelerated Machine Learning Bootcamp by the McGill Artificial Intelligence Society. </li>
+                 <li> Movie Plot Genre Classifier classifies the plot summaries using a binary classification for eight different genres: Action, Adventure, Comedy, Crime, Family, Mystery, Romance, and Thriller.</li>
+                 <li >Movie Plot Genre Classifier was built using Keras, Scikit-learn, and Flask.</li>
+                 <li> The datasets used to train the model were CMU Movie Summary Corpus Dataset while the IMDB Dataset was added because the preliminary results showed overfitting due to a lack of data.</li>
+                 <li>The model used to make predict is a Bidirectional LSTM while the features used for the model extracted were from the 10000 most common words and Keras Tokenizer API for the sequencing. </li>
+             </ul>
+             <img id="class_image" src="static/images/class.jpg">
+        </div>
+    </div>
+
+
+</body>
+    <footer class="footer-distributed">
+                <div class="footer-right">
+                    <a href="https://www.linkedin.com/philiptamcode"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://github.com/TamPhilip/movie-plot-to-genre-classfier"><i class="fa fa-github"></i></a>
+                </div>
+    </footer>
+</html>
