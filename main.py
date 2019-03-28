@@ -1,9 +1,7 @@
 from flask import Flask, Response, request, render_template
 import re
 from keras.preprocessing.sequence import pad_sequences
-from keras.preprocessing.text import Tokenizer
 import pickle
-from keras import backend as K
 from keras.models import load_model
 import json
 import tensorflow as tf
