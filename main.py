@@ -33,7 +33,7 @@ def submit():
 
 @app.route('/tokenizer')
 def run_tokenizer():
-    text = request.args.get('text')
+    text = request.args.get('text').lstrip()
     text = [re.sub(r"[^a-zA-Z0-9]+", ' ', k) for k in text.lower().split("\n")]
     x = tokenize(text).tolist()
     token = {'token': x}
