@@ -4,10 +4,9 @@ from keras.preprocessing.sequence import pad_sequences
 import pickle
 from keras.models import load_model
 import json
-import tensorflow as tf
+from tensorflow import get_default_graph
 
-global graph
-graph = tf.get_default_graph()
+graph = get_default_graph()
 action_model = load_model('resources/n_most/action_model.h5')
 adventure_model = load_model('resources/n_most/adventure_model.h5')
 comedy_model = load_model('resources/n_most/comedy_model.h5')
