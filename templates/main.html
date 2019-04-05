@@ -11,10 +11,13 @@
       <!--bootstrap-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
 </head>
 
 <body>
@@ -45,10 +48,11 @@
              <h2> Copy-paste or write a movie plot summary to classify your plot. The results will be displayed below with the genre and accuracy for each. </h2>
         </div>
 
-         <form class="form" action="{{ url_for('submit') }}" method="post">
-           <textarea name="text" rows="10" cols="50" placeholder="Enter plot summary">{% if text %}{{text}}{%endif%}</textarea>
-           <input type="submit" class="btn btn-outline-primary">
-        </form>
+         <div class="form">
+             <textarea name="text" rows="10" cols="50" placeholder="Enter plot summary">{% if text %}{{text}}{%endif%}</textarea>
+             <a href="#predict" id="submit" onclick="" class="btn btn-outline-primary"> Submit </a>
+             <script  type=text/javascript src="static/js/results.js"></script>
+        </div>
 
         <div class ="result">
                 <table id="genres">
@@ -64,49 +68,30 @@
                         <td>Thriller</td>
                     </tr>
                     <tr>
-                         <th>Accuracy</th>
-                        {% if data %}
-                            {% for item in data %}
-                                {% for key,value in item|dictsort%}
-                                      <td>{{value}}</td>
-                                {% endfor %}
-                            {% endfor %}
-                        {% else %}
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        {% endif %}
+                        <th>Accuracy</th>
+                        <td id="action-td"></td>
+                        <td id="adventure-td"></td>
+                        <td id="comedy-td"></td>
+                        <td id="crime-td"></td>
+                        <td id="family-td"></td>
+                        <td id="mystery-td"></td>
+                        <td id="romance-td"></td>
+                        <td id="thriller-td"></td>
                     </tr>
                 </table>
         </div>
 
         <div class= "taglist">
-             {% if tags %}
-                 {% for x in tags %}
-                        {% if x is eq("Action")%}
-                            <a href="#" class="badge badge-default">Action</a>
-                        {%elif x is eq("Adventure")%}
-                            <a href="#" class="badge badge-primary">Adventure</a>
-                        {%elif x is eq("Comedy")%}
-                            <a href="#" class="badge badge-secondary">Comedy</a>
-                        {%elif x is eq("Romance")%}
-                            <a href="#" class="badge badge-success">Romance</a>
-                        {%elif x is eq("Thriller")%}
-                            <a href="#" class="badge badge-danger">Thriller</a>
-                        {%elif x is eq("Crime")%}
-                            <a href="#" class="badge badge-warning">Crime</a>
-                        {%elif x is eq("Mystery")%}
-                            <a href="#" class="badge badge-info">Mystery</a>
-                        {%elif x is eq("Family")%}
-                            <a href="#" class="badge badge-dark">Family</a>
-                        {%endif%}
-                    {% endfor %}
-                {% endif %}
+            <h1>
+                <span id="action-badge" class="badge-me"> Action</span>
+                <span id="adventure-badge"  class="badge-me">Adventure</span>
+                <span id="comedy-badge"  class="badge-me">Comedy</span>
+                <span id="romance-badge"  class="badge-me">Romance</span>
+                <span id="thriller-badge"  class="badge-me">Thriller</span>
+                <span id="crime-badge"  class="badge-me">Crime</span>
+                <span id="mystery-badge"  class="badge-me">Mystery</span>
+                <span id="family-badge" class="badge-me">Family</span>
+            </h1>
         </div>
     </div>
 

@@ -198,12 +198,12 @@ nav li a:hover {
         height: 500px;
         width: 100%;
         text-align: center;
-    }
+ }
 
- .form input {
-        position: absolute;
-        top: 42%;
-        width: 50%;
+ .form a {
+     position: absolute;
+     top: 42%;
+     width: 50%;
      right: 25%;
      left: 25%;
  }
@@ -348,6 +348,94 @@ textarea {
 
 }
 
+.badge-me {
+  padding: 1px 9px 2px;
+  font-size: 12.025px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #ffffff;
+  background-color: #999999;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+.badge-me:hover {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#action-badge {
+    display: none;
+    background-color: #b94a48;
+}
+
+#action-badge:hover {
+     background-color: darkred;
+}
+
+#adventure-badge {
+    display: none;
+    background-color: skyblue;
+}
+
+#adventure-badge:hover {
+    background: lightblue;
+}
+
+#comedy-badge {
+    display: none;
+    background-color: gold;
+}
+
+#comedy-badge:hover {
+    background-color: darkgoldenrod;
+}
+
+#crime-badge {
+    display: none;
+    background-color: black;
+}
+
+#crime-badge:hover {
+
+}
+
+#family-badge {
+    display: none;
+    background-color: darkseagreen;
+}
+
+#family-badge:hover {
+    background-color: green;
+}
+
+#romance-badge {
+    display: none;
+    background-color: pink;
+}
+
+#romance-badge:hover {
+    background-color: hotpink;
+}
+
+#thriller-badge {
+    display: none;
+    background-color: olive;
+}
+
+#thriller-badge:hover {
+    background-color: olivedrab;
+}
+
+#mystery-badge {
+    display: none;
+    background-color: darkgray;
+}
+
+#mystery-badge:hover {
+    background-color: darkslategray;
+}
 
 /* Example */
 
