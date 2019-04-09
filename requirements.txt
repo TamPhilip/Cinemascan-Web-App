@@ -22,6 +22,5 @@ tensorflow-estimator==1.13.0
 tensorflow-hub==0.3.0
 tensorflow==1.13.1
 tensorboard==1.13.1
-termcolor==1.1.0
-tf-nightly-2.0-preview==2.0.0.dev20190322
+termcolor==1.1.02
 Werkzeug==0.15.1
