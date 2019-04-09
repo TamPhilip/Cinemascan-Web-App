@@ -18,9 +18,10 @@ PyYAML==5.1
 scipy==1.2.1
 six==1.11.0
 tb-nightly==1.14.0a20190319
-tensorflow-estimator-2.0-preview==1.14.0.dev2019032200
+tensorflow-estimator=1.13.0
 tensorflow-hub==0.3.0
 tensorflow==1.13.1
+tensorboard=1.13.1
 termcolor==1.1.0
 tf-nightly-2.0-preview==2.0.0.dev20190322
 Werkzeug==0.15.1
