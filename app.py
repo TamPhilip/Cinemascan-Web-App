@@ -1,4 +1,5 @@
 from flask import Flask, Response, request, render_template, jsonify
+from os import environ
 import re
 import pickle
 from keras.models import load_model
@@ -95,4 +96,4 @@ def predict(sequence):
     return (predictions, results)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(environ.get('PORT'))
