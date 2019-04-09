@@ -5,14 +5,14 @@ from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 import json
 
-action_model = load_model('resources/n_most/action_model.h5')
-adventure_model = load_model('resources/n_most/adventure_model.h5')
-comedy_model = load_model('resources/n_most/comedy_model.h5')
-crime_model = load_model('resources/n_most/crime_model.h5')
-family_model = load_model('resources/n_most/family_model.h5')
-mystery_model = load_model('resources/n_most/mystery_model.h5')
-romance_model = load_model('resources/n_most/romance_model.h5')
-thriller_model = load_model('resources/n_most/thriller_model.h5')
+action_model = load_model('./resources/n_most/action_model.h5')
+adventure_model = load_model('./resources/n_most/adventure_model.h5')
+comedy_model = load_model('./resources/n_most/comedy_model.h5')
+crime_model = load_model('./resources/n_most/crime_model.h5')
+family_model = load_model('./resources/n_most/family_model.h5')
+mystery_model = load_model('./resources/n_most/mystery_model.h5')
+romance_model = load_model('./resources/n_most/romance_model.h5')
+thriller_model = load_model('./resources/n_most/thriller_model.h5')
 
 models = {"Action": action_model,
           "Adventure": adventure_model,
