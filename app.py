@@ -69,38 +69,38 @@ def predict(sequence):
 
 if __name__ == '__main__':
     app.run(environ.get('PORT'))
-    print("Here")
-
-    action_model = load_model('./resources/n_most/action_model.h5')
-    print("Second")
-    adventure_model = load_model('./resources/n_most/adventure_model.h5')
-    print("Seconds")
-    comedy_model = load_model('./resources/n_most/comedy_model.h5')
-    print("Foyurth")
-    crime_model = load_model('./resources/n_most/crime_model.h5')
-    family_model = load_model('./resources/n_most/family_model.h5')
-    print("sa")
-    mystery_model = load_model('./resources/n_most/mystery_model.h5')
-    romance_model = load_model('./resources/n_most/romance_model.h5')
-    thriller_model = load_model('./resources/n_most/thriller_model.h5')
-
-    models = {"Action": action_model,
-              "Adventure": adventure_model,
-              'Comedy': comedy_model,
-              "Crime": crime_model,
-              "Family": family_model,
-              "Mystery": mystery_model,
-              "Romance": romance_model,
-              "Thriller": thriller_model}
-
-    del action_model
-    del adventure_model
-    del comedy_model
-    del crime_model
-    del family_model
-    del mystery_model
-    del romance_model
-    del thriller_model
-
-    for genre, model in models.items():
-        model._make_predict_function()
+    # print("Here")
+    #
+    # action_model = load_model('./resources/n_most/action_model.h5')
+    # print("Second")
+    # adventure_model = load_model('./resources/n_most/adventure_model.h5')
+    # print("Seconds")
+    # comedy_model = load_model('./resources/n_most/comedy_model.h5')
+    # print("Foyurth")
+    # crime_model = load_model('./resources/n_most/crime_model.h5')
+    # family_model = load_model('./resources/n_most/family_model.h5')
+    # print("sa")
+    # mystery_model = load_model('./resources/n_most/mystery_model.h5')
+    # romance_model = load_model('./resources/n_most/romance_model.h5')
+    # thriller_model = load_model('./resources/n_most/thriller_model.h5')
+    #
+    # models = {"Action": action_model,
+    #           "Adventure": adventure_model,
+    #           'Comedy': comedy_model,
+    #           "Crime": crime_model,
+    #           "Family": family_model,
+    #           "Mystery": mystery_model,
+    #           "Romance": romance_model,
+    #           "Thriller": thriller_model}
+    #
+    # del action_model
+    # del adventure_model
+    # del comedy_model
+    # del crime_model
+    # del family_model
+    # del mystery_model
+    # del romance_model
+    # del thriller_model
+    #
+    # for genre, model in models.items():
+    #     model._make_predict_function()
