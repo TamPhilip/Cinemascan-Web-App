@@ -96,5 +96,5 @@ def predict(sequence):
 
 print("Here")
 
-if __name__ == '__main__':
-    app.run(environ.get('PORT'))
+# if __name__ == '__main__':
+app.run(environ.get('PORT'))
