@@ -6,11 +6,17 @@ from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 import json
 
+print("Here")
+
 action_model = load_model('./resources/n_most/action_model.h5')
+print("Second")
 adventure_model = load_model('./resources/n_most/adventure_model.h5')
+print("Seconds")
 comedy_model = load_model('./resources/n_most/comedy_model.h5')
+print("Foyurth")
 crime_model = load_model('./resources/n_most/crime_model.h5')
 family_model = load_model('./resources/n_most/family_model.h5')
+print("sa")
 mystery_model = load_model('./resources/n_most/mystery_model.h5')
 romance_model = load_model('./resources/n_most/romance_model.h5')
 thriller_model = load_model('./resources/n_most/thriller_model.h5')
@@ -37,6 +43,7 @@ for genre, model in models.items():
     model._make_predict_function()
 
 app = Flask(__name__)
+app.run(environ.get('PORT'))
 
 @app.route('/', methods = ['GET'])
 def main():
@@ -94,7 +101,7 @@ def predict(sequence):
     print(results)
     return (predictions, results)
 
-print("Here")
+
 
 # if __name__ == '__main__':
-app.run(environ.get('PORT'))
+
