@@ -36,7 +36,6 @@ del thriller_model
 for genre, model in models.items():
     model._make_predict_function()
 
-
 app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
@@ -94,6 +93,8 @@ def predict(sequence):
             print("What")
     print(results)
     return (predictions, results)
+
+print("Here")
 
 if __name__ == '__main__':
     app.run(environ.get('PORT'))
