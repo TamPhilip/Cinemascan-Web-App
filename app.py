@@ -4,7 +4,7 @@ import pickle
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 import json
-#
+
 print("Action Loading")
 action_model = load_model('./resources/n_most/action_model.h5')
 action_model._make_predict_function()
@@ -21,13 +21,13 @@ print("Crime Loading")
 crime_model = load_model('./resources/n_most/crime_model.h5')
 crime_model._make_predict_function()
 
-print("Family Loading")
-family_model = load_model('./resources/n_most/family_model.h5')
-family_model._make_predict_function()
-
-print("Mystery Loading")
-mystery_model = load_model('./resources/n_most/mystery_model.h5')
-mystery_model._make_predict_function()
+# print("Family Loading")
+# family_model = load_model('./resources/n_most/family_model.h5')
+# family_model._make_predict_function()
+#
+# print("Mystery Loading")
+# mystery_model = load_model('./resources/n_most/mystery_model.h5')
+# mystery_model._make_predict_function()
 
 print("Romance Loading")
 romance_model = load_model('./resources/n_most/romance_model.h5')
@@ -123,8 +123,8 @@ def predict(sequence):
     predictions, results = do_pred(adventure_model, "Adventure", sequence, predictions, results)
     predictions, results = do_pred(comedy_model, "Comedy", sequence, predictions, results)
     predictions, results = do_pred(crime_model, "Crime", sequence, predictions, results)
-    predictions, results = do_pred(family_model, "Family", sequence, predictions, results)
-    predictions, results = do_pred(mystery_model, "Mystery", sequence, predictions, results)
+    # predictions, results = do_pred(family_model, "Family", sequence, predictions, results)
+    # predictions, results = do_pred(mystery_model, "Mystery", sequence, predictions, results)
     predictions, results = do_pred(romance_model, "Romance", sequence, predictions, results)
     predictions, results = do_pred(thriller_model, "Thriller", sequence, predictions, results)
     # for genre, model in models.items():
