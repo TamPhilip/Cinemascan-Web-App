@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script type=text/javascript>
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     </script>
@@ -59,22 +59,22 @@
                     <tr>
                         <th>Genre</th>
                         <td>Action</td>
-                        <!--<td>Adventure</td>-->
+                        <td>Adventure</td>
                         <td>Comedy</td>
                         <td>Crime</td>
-                        <!--<td>Family</td>-->
-                        <!--<td>Mystery</td>-->
+                        <td>Family</td>
+                        <td>Mystery</td>
                         <td>Romance</td>
                         <td>Thriller</td>
                     </tr>
                     <tr>
                         <th>Accuracy</th>
                         <td id="action-td"></td>
-                        <!--<td id="adventure-td"></td>-->
+                        <td id="adventure-td"></td>
                         <td id="comedy-td"></td>
                         <td id="crime-td"></td>
-                        <!--<td id="family-td"></td>-->
-                        <!--<td id="mystery-td"></td>-->
+                        <td id="family-td"></td>
+                        <td id="mystery-td"></td>
                         <td id="romance-td"></td>
                         <td id="thriller-td"></td>
                     </tr>
@@ -130,14 +130,14 @@
              <ul id="mais_info">
                  <li> This project is the final project for MAIS-202: Accelerated Machine Learning Bootcamp by the McGill Artificial Intelligence Society. </li>
                  <li> Movie Plot Genre Classifier classifies the plot summaries using a binary classification for
-                     <!--eight-->
+                     eight
                      five
                      different genres: Action,
-                     <!--Adventure,-->
+                     Adventure,
                      Comedy,
                      Crime,
-                     <!--Family,-->
-                     <!--Mystery, -->
+                     Family,
+                     Mystery,
                      Romance,
                      and
                      Thriller.</li>

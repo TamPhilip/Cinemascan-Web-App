@@ -1,64 +1,10 @@
 from flask import Flask, Response, request, render_template, jsonify
 import re
 import pickle
+from keras import backend as K
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 import json
-
-print("Action Loading")
-action_model = load_model('./resources/n_most/action_model.h5')
-action_model._make_predict_function()
-
-# print("Adventure Loading")
-# adventure_model = load_model('./resources/n_most/adventure_model.h5')
-# adventure_model._make_predict_function()
-
-print("Comedy Loading")
-comedy_model = load_model('./resources/n_most/comedy_model.h5')
-comedy_model._make_predict_function()
-
-print("Crime Loading")
-crime_model = load_model('./resources/n_most/crime_model.h5')
-crime_model._make_predict_function()
-
-# print("Family Loading")
-# family_model = load_model('./resources/n_most/family_model.h5')
-# family_model._make_predict_function()
-#
-# print("Mystery Loading")
-# mystery_model = load_model('./resources/n_most/mystery_model.h5')
-# mystery_model._make_predict_function()
-
-print("Romance Loading")
-romance_model = load_model('./resources/n_most/romance_model.h5')
-romance_model._make_predict_function()
-
-print("Thriller Loading")
-thriller_model = load_model('./resources/n_most/thriller_model.h5')
-thriller_model._make_predict_function()
-
-print("Done Loading")
-# models = {"Action": action_model,
-          # "Adventure": adventure_model,
-          # 'Comedy': comedy_model,
-          # "Crime": crime_model,
-#           "Family": family_model,
-#           "Mystery": mystery_model,
-#           "Romance": romance_model
-#           "Thriller": thriller_model
-#             }
-#
-# del action_model
-# del adventure_model
-# del comedy_model
-# del crime_model
-# del family_model
-# del mystery_model
-# del romance_model
-# del thriller_model
-#
-# for genre, model in models.items():
-#     model._make_predict_function()
 
 app = Flask(__name__)
 
@@ -119,26 +65,24 @@ def do_pred(model, genre, sequence, predictions, results):
 def predict(sequence):
     predictions = []
     results = {}
-    predictions, results = do_pred(action_model, "Action", sequence, predictions, results)
-    # predictions, results = do_pred(adventure_model, "Adventure", sequence, predictions, results)
-    predictions, results = do_pred(comedy_model, "Comedy", sequence, predictions, results)
-    predictions, results = do_pred(crime_model, "Crime", sequence, predictions, results)
-    # predictions, results = do_pred(family_model, "Family", sequence, predictions, results)
-    # predictions, results = do_pred(mystery_model, "Mystery", sequence, predictions, results)
-    predictions, results = do_pred(romance_model, "Romance", sequence, predictions, results)
-    predictions, results = do_pred(thriller_model, "Thriller", sequence, predictions, results)
-    # for genre, model in models.items():
-    #     if model is not None:
-    #         value = model.predict(sequence)[0][0]
-    #         if value > 0.5:
-    #             predictions.append(genre)
-    #         results[genre] = str(value)
-    #     else:
-    #         print("What")
+    genres = {
+            "Action": "action_model.h5",
+            "Adventure":"adventure_model.h5",
+            "Comedy": "comedy_model.h5",
+            "Crime": "crime_model.h5",
+            "Family" : "family_model.h5",
+            "Mystery" :"mystery_model.h5",
+            "Romance": "romance_model.h5",
+            "Thriller": "thriller_model.h5"
+    }
+    for genre, model_n in genres.items():
+        K.clear_session()
+        print("{} Loading".format(genre))
+        model = load_model('./resources/n_most/{}'.format(model_n), compile=False)
+        model._make_predict_function()
+        predictions, results = do_pred(model, genre, sequence, predictions, results)
     print(results)
     return (predictions, results)
-
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
