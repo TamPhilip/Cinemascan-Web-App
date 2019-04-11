@@ -9,9 +9,9 @@ print("Action Loading")
 action_model = load_model('./resources/n_most/action_model.h5')
 action_model._make_predict_function()
 
-print("Adventure Loading")
-adventure_model = load_model('./resources/n_most/adventure_model.h5')
-adventure_model._make_predict_function()
+# print("Adventure Loading")
+# adventure_model = load_model('./resources/n_most/adventure_model.h5')
+# adventure_model._make_predict_function()
 
 print("Comedy Loading")
 comedy_model = load_model('./resources/n_most/comedy_model.h5')
@@ -120,7 +120,7 @@ def predict(sequence):
     predictions = []
     results = {}
     predictions, results = do_pred(action_model, "Action", sequence, predictions, results)
-    predictions, results = do_pred(adventure_model, "Adventure", sequence, predictions, results)
+    # predictions, results = do_pred(adventure_model, "Adventure", sequence, predictions, results)
     predictions, results = do_pred(comedy_model, "Comedy", sequence, predictions, results)
     predictions, results = do_pred(crime_model, "Crime", sequence, predictions, results)
     # predictions, results = do_pred(family_model, "Family", sequence, predictions, results)
