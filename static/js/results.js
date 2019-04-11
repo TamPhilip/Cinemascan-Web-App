@@ -6,16 +6,16 @@
      }, function (data) {
          $("#action-td").text(data.result.Action);
          displayBadge(data.result.Action, $("#action-badge"));
-         $("#adventure-td").text(data.result.Adventure);
-         displayBadge(data.result.Adventure, $("#adventure-badge"));
+         // $("#adventure-td").text(data.result.Adventure);
+         // displayBadge(data.result.Adventure, $("#adventure-badge"));
          $("#comedy-td").text(data.result.Comedy);
          displayBadge(data.result.Comedy, $("#comedy-badge"));
          $("#crime-td").text(data.result.Crime);
          displayBadge(data.result.Crime, $("#crime-badge"));
-         $("#family-td").text(data.result.Family);
-         displayBadge(data.result.Family, $("#family-badge"));
-         $("#mystery-td").text(data.result.Mystery);
-         displayBadge(data.result.Mystery, $("#mystery-badge"));
+         // $("#family-td").text(data.result.Family);
+         // displayBadge(data.result.Family, $("#family-badge"));
+         // $("#mystery-td").text(data.result.Mystery);
+         // displayBadge(data.result.Mystery, $("#mystery-badge"));
          $("#romance-td").text(data.result.Romance);
          displayBadge(data.result.Romance, $("#romance-badge"));
          $("#thriller-td").text(data.result.Thriller);

@@ -59,22 +59,22 @@
                     <tr>
                         <th>Genre</th>
                         <td>Action</td>
-                        <td>Adventure</td>
+                        <!--<td>Adventure</td>-->
                         <td>Comedy</td>
                         <td>Crime</td>
-                        <td>Family</td>
-                        <td>Mystery</td>
+                        <!--<td>Family</td>-->
+                        <!--<td>Mystery</td>-->
                         <td>Romance</td>
                         <td>Thriller</td>
                     </tr>
                     <tr>
                         <th>Accuracy</th>
                         <td id="action-td"></td>
-                        <td id="adventure-td"></td>
+                        <!--<td id="adventure-td"></td>-->
                         <td id="comedy-td"></td>
                         <td id="crime-td"></td>
-                        <td id="family-td"></td>
-                        <td id="mystery-td"></td>
+                        <!--<td id="family-td"></td>-->
+                        <!--<td id="mystery-td"></td>-->
                         <td id="romance-td"></td>
                         <td id="thriller-td"></td>
                     </tr>
@@ -129,7 +129,18 @@
          <div class="text">
              <ul id="mais_info">
                  <li> This project is the final project for MAIS-202: Accelerated Machine Learning Bootcamp by the McGill Artificial Intelligence Society. </li>
-                 <li> Movie Plot Genre Classifier classifies the plot summaries using a binary classification for eight different genres: Action, Adventure, Comedy, Crime, Family, Mystery, Romance, and Thriller.</li>
+                 <li> Movie Plot Genre Classifier classifies the plot summaries using a binary classification for
+                     <!--eight-->
+                     five
+                     different genres: Action,
+                     <!--Adventure,-->
+                     Comedy,
+                     Crime,
+                     <!--Family,-->
+                     <!--Mystery, -->
+                     Romance,
+                     and
+                     Thriller.</li>
                  <li >Movie Plot Genre Classifier was built using Keras, Scikit-learn, and Flask.</li>
                  <li> The datasets used to train the model were CMU Movie Summary Corpus Dataset while the IMDB Dataset was added because the preliminary results showed overfitting due to a lack of data.</li>
                  <li>The model used to make predict is a Bidirectional LSTM while the features used for the model extracted were from the 10000 most common words and Keras Tokenizer API for the sequencing. </li>
