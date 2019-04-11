@@ -5,21 +5,35 @@ from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 import json
 #
-
+print("Action Loading")
 action_model = load_model('./resources/n_most/action_model.h5')
 action_model._make_predict_function()
+
+print("Adventure Loading")
 adventure_model = load_model('./resources/n_most/adventure_model.h5')
 adventure_model._make_predict_function()
+
+print("Comedy Loading")
 comedy_model = load_model('./resources/n_most/comedy_model.h5')
 comedy_model._make_predict_function()
+
+print("Crime Loading")
 crime_model = load_model('./resources/n_most/crime_model.h5')
 crime_model._make_predict_function()
+
+print("Family Loading")
 family_model = load_model('./resources/n_most/family_model.h5')
 family_model._make_predict_function()
+
+print("Mystery Loading")
 mystery_model = load_model('./resources/n_most/mystery_model.h5')
 mystery_model._make_predict_function()
+
+print("Romance Loading")
 romance_model = load_model('./resources/n_most/romance_model.h5')
 romance_model._make_predict_function()
+
+print("Thriller Loading")
 thriller_model = load_model('./resources/n_most/thriller_model.h5')
 thriller_model._make_predict_function()
 
