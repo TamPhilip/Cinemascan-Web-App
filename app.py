@@ -76,11 +76,20 @@ def predict(sequence):
             "Thriller": "thriller_model.h5"
     }
     for genre, model_n in genres.items():
+        # Clears the Keras session to free up memory to decrease load time
         K.clear_session()
         print("{} Loading".format(genre))
+
+        # Loads from one of the models
         model = load_model('./resources/n_most/{}'.format(model_n), compile=False)
+
+        # Sets up the prediction function
         model._make_predict_function()
+
+        # Get the value from the prediction and identifies if it is apart of that genre and then adds it to the results
+        # And also appends the genre of the prediction
         predictions, results = do_pred(model, genre, sequence, predictions, results)
+
     print(results)
     return (predictions, results)
 

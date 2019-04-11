@@ -135,22 +135,25 @@ nav li a:hover {
 }
 
  .btn-outline-primary, .btn-outline-primary:active  {
-     background-color: white!important;
-     border-color: black !important;
-     color: #000000 !important;
+      font-family: 'Helvetica', sans-serif;
+     background-color: black !important;
+    border-color: white !important;
+    color: white !important;
+     border-radius: 24px !important;
+     outline-color: black!important;
  }
 
 .btn-outline-primary:hover {
-    background-color: black !important;
-    border-color: white !important;
-    color: white !important;
+     background-color: white !important;
+     border-color: black !important;
+     color: black!important;
+     border-radius: 24px !important;
 }
 
- .btn-outline-primary:visited {
-    background-color: black !important;
-    border-color: white !important;
-    color: white !important;
- }
+.btn:active {
+    outline-color: black!important;
+    color:darkgray;
+}
 
  @media (max-width: 600px) {
 
@@ -444,6 +447,7 @@ textarea {
     background-color: black;
     text-align: center;
     overflow:auto;
+    overflow-x: hidden;
 }
 
 .card-deck {
@@ -454,9 +458,14 @@ textarea {
 
 }
 
-.card, .card-body, .card-text, .card h2, card p {
+.card, .card-body, .card-text, card p {
     background-color: black;
     overflow:auto;
+}
+
+.card h2 {
+    background-color: black;
+    overflow: hidden!important;
 }
 
 /*  ABOUT */
