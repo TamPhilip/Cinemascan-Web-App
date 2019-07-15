@@ -3,8 +3,9 @@ Web App to demo the Plot to Genre classifier. Built using Flask, HTML, CSS, Boot
 
 To get the app running:
 
-Make sure to have pip installed if download pip and install it first.
-The web app is run using python 3.6.
+Make sure to have pip installed if not download pip and install it first.
+Pip:
+https://pip.pypa.io/en/stable/installing/
 
 Run the following commands.
 ```
@@ -14,5 +15,9 @@ pip install -r requirements.txt
 python app.py
 
 ```
+
+Note:
+The web app is run using python 3.6.
+
 Thank you if you have any question or problems please contact me at:
 philip.tam.code@gmail.com
