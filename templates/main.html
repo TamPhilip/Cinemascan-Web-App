@@ -29,7 +29,7 @@
 
     <div id="navWrap">
         <nav>
-        <ul>
+        <ul id="bootstrap-overrides">
               <li class="border-right"><a class="active" href="#home">Home</a></li>
               <li class="border-right"><a href="#predict">Predict</a></li>
               <li class="border-right"><a href="#sample">sample</a></li>
@@ -45,7 +45,9 @@
             <h1 id="specialh1"> Predict </h1>
         </div>
         <div class="text">
-             <h2> Copy-paste or write a movie plot summary to classify your plot. The results will be displayed below with the genre and accuracy for each. The prediction might take up to 40 seconds to load. </h2>
+             <h2> Copy-paste or write a movie plot summary to classify your plot. 
+            The results will be displayed below with the genre and accuracy for each.
+              The prediction takes from about 10-30 seconds to load. Each result shown will be out of a scale of 1. Each genre is predicted seperately because of the nature of cross-genre movies.   </h2>
         </div>
 
          <div class="form">
@@ -137,7 +139,19 @@
              <img id="class_image" src="static/images/class.jpg">
         </div>
     </div>
-
+    
+    <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="loader"></div>
+                <div clas="loader-txt">
+                <p> Predicting genre of movie plot... <br><br><small> The prediction can take from 10-30 seconds. </small></p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 
 </body>
     <footer class="footer-distributed">

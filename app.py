@@ -6,12 +6,15 @@ from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 import json
 
+# App
 app = Flask(__name__)
 
+#  Renders the main root
 @app.route('/', methods = ['GET'])
 def main():
      return render_template('main.html')
 
+# Submit the movie plot summary to be tokenized, predicted, and then return a status code of 200 okay 
 @app.route('/submit', methods = ['GET'])
 def submit():
     text = request.args.get('text', "", type=str).lstrip()
@@ -29,6 +32,7 @@ def submit():
     toReturn.status_code = 200
     return toReturn
 
+# Specifically to tokenize the string
 @app.route('/tokenizer')
 def run_tokenizer():
     text = request.args.get('text').lstrip()
@@ -38,6 +42,8 @@ def run_tokenizer():
     token = {'token': x}
     return Response(json.dumps(token), mimetype='application/json')
 
+
+# Specifically to predict the string
 @app.route('/predict')
 def run_prediction():
     text = request.args.get('text').lstrip()
@@ -46,6 +52,7 @@ def run_prediction():
     x = tokenize(text)
     return Response(json.dumps({'prediction': predict(x)}), mimetype='application/json')
 
+# Tokenize the string into a specific tokenizer
 def tokenize(text):
     with open('resources/tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
@@ -53,11 +60,13 @@ def tokenize(text):
         x = pad_sequences(sequence, maxlen=500)
         return x
 
-
+# Makes the prediction and gets the value from the model
 def do_pred(model, genre, sequence, predictions, results):
     value = model.predict(sequence)[0][0]
+    # If the value predicted is bigger than 0.5 than it has predicted it 
     if value > 0.5:
         predictions.append(genre)
+    # add the value to the results
     results[genre] = str(value)
     return predictions, results
 
@@ -75,6 +84,7 @@ def predict(sequence):
             "Romance": "romance_model.h5",
             "Thriller": "thriller_model.h5"
     }
+    # Each genre will be loaded individually to save memory
     for genre, model_n in genres.items():
         # Clears the Keras session to free up memory to decrease load time
         K.clear_session()
@@ -93,5 +103,6 @@ def predict(sequence):
     print(results)
     return (predictions, results)
 
+# Runs locally
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

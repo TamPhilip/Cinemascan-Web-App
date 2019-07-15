@@ -1,9 +1,15 @@
  $('#submit').click( function(e) {
      e.preventDefault();
      console.log("Get JSON");
+     $("#loadMe").modal({
+         backdrop: "static", //remove ability to close modal with click
+         keyboard: false, //remove option to close with keyboard
+         show: true //Display loader!
+     });
      $.getJSON($SCRIPT_ROOT + '/submit', {
          text: $('textarea[name="text"]').val()
-     }, function (data) {
+     }, function (data) {  
+            $("#loadMe").modal("hide");
          $("#action-td").text(data.result.Action);
          displayBadge(data.result.Action, $("#action-badge"));
          $("#adventure-td").text(data.result.Adventure);
