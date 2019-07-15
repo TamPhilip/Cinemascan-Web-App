@@ -7,10 +7,12 @@ Make sure to have pip installed if download pip and install it first.
 The web app is run using python 3.6.
 
 Run the following commands.
-'''
+```
 git clone "https://github.com/TamPhilip/Movie-Plot-Genre-Classifier-Web-App"
 cd Movie-Plot-Genre-Classifier-Web-App
 pip install -r requirements.txt
 python app.py
 
-'''
+```
+Thank you if you have any question or problems please contact me at:
+philip.tam.code@gmail.com
